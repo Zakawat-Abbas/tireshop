@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
+const DATABASE = process.env.DATABASE;
 
 module.exports = () => {
 	const connectionParams = {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	};
-	const mongoString = "mongodb+srv://zakawatabbas123:V0YyODDy6GdXOASs@tireshop.wcfpwl8.mongodb.net/DB";
+	const mongoString = `${DATABASE}`;
 	try {
 		mongoose.connect(mongoString, connectionParams);
 		console.log("Connected to database successfully");
