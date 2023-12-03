@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-const BASE_URL = process.env.BASE_URL;
 
 const Product = ({ tyre }) => {
 	const [quantity, setQuantity] = useState(1);
@@ -23,7 +22,7 @@ const Product = ({ tyre }) => {
 		console.log(orderData);
 
 		try {
-			axios.post(`${BASE_URL}/createorders`, orderData)
+			axios.post(`https://tireshop-server.onrender.com/createorders`, orderData)
 				.then((res) => {
 					console.log(res.data)
 					navigate('/cart');
