@@ -1,0 +1,26 @@
+.bubble {
+	position: absolute;
+	animation: bubbleAnimation 0.4s;
+}
+.custom-bg {
+	background: rgba(196, 71, 71, 0.2);
+}
+
+@keyframes bubbleAnimation {
+	0% {
+		transform: translate(-50%, -20%);
+		opacity: 0;
+	}
+	50% {
+		transform: translate(-50%, -40%);
+		opacity: 0.5;
+	}
+	80% {
+		transform: translate(-50%, -65%);
+		opacity: 1;
+	}
+	100% {
+		transform: translate(-50%, -50%);
+		opacity: 1;
+	}
+}

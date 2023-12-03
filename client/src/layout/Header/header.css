@@ -1,0 +1,6 @@
+.bg-logout {
+    background-image: url('../public/img/logout.png');
+    /* height: 29px;
+    width: 49px; */
+    margin-top: 15px;
+}
