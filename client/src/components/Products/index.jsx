@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-const BASE_URL = process.env.BASE_URL;
 
 import Product from '../Product/index.jsx';
 const Products = () => {
@@ -11,7 +10,7 @@ const Products = () => {
 	useEffect(() => {
 		async function fetchProjects() {
 			try {
-				axios.get(`${BASE_URL}/getproducts`)
+				axios.get(`https://tireshop-server.onrender.com/getproducts`)
 					.then((res) => {
 						console.log(res.data)
 						setProducts(res.data);

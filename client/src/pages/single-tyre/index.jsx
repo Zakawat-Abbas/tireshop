@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../../layout';
 import { useNavigate } from 'react-router-dom';
-const BASE_URL = process.env.BASE_URL;
 
 import axios from 'axios';
 const SingleTyre = () => {
@@ -14,7 +13,7 @@ const SingleTyre = () => {
 	const [tyre, setTyre] = useState(null);
 
 	useEffect(() => {
-		axios.get(`${BASE_URL}/products/${id}`)
+		axios.get(`https://tireshop-server.onrender.com/products/${id}`)
 			.then((response) => {
 				console.log(response.data);
 				setTyre(response.data);
@@ -42,7 +41,7 @@ const SingleTyre = () => {
 		console.log(orderData);
 
 		try {
-			axios.post(`${BASE_URL}/createorders`, orderData)
+			axios.post(`https://tireshop-server.onrender.com/createorders`, orderData)
 				.then((res) => {
 					console.log(res.data)
 					navigate('/cart');

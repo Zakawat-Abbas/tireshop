@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import './Login.css'
-const BASE_URL = process.env.BASE_URL;
 
 
 const Login = () => {
@@ -16,7 +15,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = `${BASE_URL}/api/auth`;
+			const url = `https://tireshop-server.onrender.com/api/auth`;
 			// const { data: res } = await axios.post(url, data);
 			const { data: { data: token, fullName, message } } = await axios.post(url, data);
 			localStorage.setItem("token", token);

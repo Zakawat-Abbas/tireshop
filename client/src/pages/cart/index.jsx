@@ -1,7 +1,6 @@
 import Layout from '../../layout';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-const BASE_URL = process.env.BASE_URL;
 
 
 const Cart = () => {
@@ -12,7 +11,7 @@ const Cart = () => {
 	const [taxPrice, setTaxPrice] = useState(4788);
 
 	useEffect(() => {
-		axios.get(`${BASE_URL}/getorders`)
+		axios.get(`https://tireshop-server.onrender.com/getorders`)
 			.then((res) => {
 				setOrder(res.data)
 				calculateTotalPrice(res.data);
@@ -42,7 +41,7 @@ const Cart = () => {
 			updatedOrder[orderIndex].orderItems.splice(itemIndex, 1);
 			setOrder(updatedOrder);
 			calculateTotalPrice(updatedOrder);
-			await axios.delete(`${BASE_URL}/deleteItem/${orderId}`);
+			await axios.delete(`https://tireshop-server.onrender.com/deleteItem/${orderId}`);
 		} catch (error) {
 			console.error('Failed to delete item:', error);
 		}

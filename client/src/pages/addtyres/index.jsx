@@ -29,7 +29,7 @@ const AddTyre = () => {
 		console.log(formData);
 
 		try {
-			await axios.post('http://localhost:8080/addTyre', formData);
+			await axios.post('https://tireshop-server.onrender.com/addTyre', formData);
 			navigate('/');
 		} catch (error) {
 			console.error('Error adding tyre:', error);

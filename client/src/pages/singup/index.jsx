@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-const BASE_URL = process.env.BASE_URL;
 // import "./Signup.css";
 // import '../login/Login.css';
 
@@ -22,7 +21,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = `${BASE_URL}/api/users`;
+			const url = `https://tireshop-server.onrender.com/api/users`;
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);
