@@ -98,7 +98,7 @@ const Header = () => {
 					<li className='text-center md:text-left lg:text-left'>
 						{token ? (
 							<button
-								className='cursor-pointer border-none bg-user w-11 h-11 bg-no-repeat bg-cover'
+								className='cursor-pointer border-none bg-logout w-11 h-11 bg-no-repeat bg-cover'
 								onClick={handleLogout}
 							></button>
 						) : (
