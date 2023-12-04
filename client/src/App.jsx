@@ -9,9 +9,7 @@ import SearchedTyres from './pages/searched-tyres';
 import Cart from './pages/cart';
 import Profile from './pages/profile';
 import AddTyre from './pages/addtyres';
-
-import Login from "./pages/login";
-import Signup from "./pages/singup";
+import Login_Signup from './pages/Login_Signup';
 function App() {
 	return (
 
@@ -27,38 +25,10 @@ function App() {
 				<Route path='/contact' element={<Contact />} />
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/addtyre' element={<AddTyre />} />
-				<Route path="/signup" exact element={<Signup />} />
-				<Route path="/login" exact element={<Login />} />
+				<Route path="/login" exact element={<Login_Signup />} />
 			</Routes>
 		</BrowserRouter>
 	);
 }
 
 export default App;
-
-
-{/* <BrowserRouter>
-			<Routes> */}
-{/* <Route path='/' element={<Home />} />
-				<Route path='/cart' element={<Cart />} />
-				<Route path='/tyres/:id' element={<SingleTyre />} />
-				<Route path='/tyres/search' element={<SearchedTyres />} />
-				<Route path='/info' element={<Info />} />
-				<Route path='/customer-services' element={<CustomerServices />} />
-				<Route path='/deck' element={<Deck />} />
-				<Route path='/contact' element={<Contact />} />
-				<Route path='/profile' element={<Profile />} /> */}
-
-{/* {user && <Route path="/" exact element={<Main />} />}
-				<Route path="/signup" exact element={<Signup />} />
-				<Route path="/login" exact element={<Login />} />
-				<Route path="/" element={<Navigate replace to="/login" />} /> */}
-{/* </Routes>
-
-		</BrowserRouter>
-		// <Routes>
-		// 	{user && <Route path="/" exact element={<Main />} />}
-		// 	<Route path="/signup" exact element={<Signup />} />
-		// 	<Route path="/login" exact element={<Login />} />
-		// 	<Route path="/" element={<Navigate replace to="/login" />} />
-		// </Routes> */}
