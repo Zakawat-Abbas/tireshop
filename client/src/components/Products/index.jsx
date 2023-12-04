@@ -3,29 +3,33 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Product from '../Product/index.jsx';
-const Products = () => {
+const Products = ({ searchResults }) => {
 	const [products, setProducts] = useState([]);
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		async function fetchProjects() {
-			try {
-				axios.get(`https://tireshop-server.onrender.com/getproducts`)
-					.then((res) => {
-						console.log(res.data)
-						setProducts(res.data);
-					}).catch((err) => {
-						alert('Failed to fetch products.');
-						console.error('Failed to fetch products.', err);
-					});
+		if (searchResults && searchResults.length > 0) {
+			setProducts(searchResults);
+		} else {
+			async function fetchProjects() {
+				try {
+					axios.get(`https://tireshop-server.onrender.com/getproducts`)
+						.then((res) => {
+							console.log(res.data)
+							setProducts(res.data);
+						}).catch((err) => {
+							alert('Failed to fetch products.');
+							console.error('Failed to fetch products.', err);
+						});
 
-			} catch (error) {
-				console.error('Error fetching products:', error);
+				} catch (error) {
+					console.error('Error fetching products:', error);
+				}
 			}
-		}
 
-		fetchProjects();
-	}, []);
+			fetchProjects();
+		}
+	}, [searchResults]);
 
 	const addtyres = () => {
 		navigate('/addtyre');

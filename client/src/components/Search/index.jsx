@@ -13,6 +13,7 @@ const Search = ({ onClose, onSubmit }) => {
 			>
 				<form action='' onSubmit={onSubmit}>
 					<input
+						id='searchInput'
 						type='text'
 						placeholder='Search here...'
 						className=' text-2xl w-4/5 bubble py-3 px-4 border-2 rounded-lg absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-white'

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -6,7 +7,7 @@ import Search from '../../components/Search';
 import './header.css'
 
 import { routes } from '../../routes';
-const Header = () => {
+const Header = (props) => {
 	const [toggleSearch, setToggleSearch] = useState(false);
 	const navigate = useNavigate();
 	const [mobileNav, setMobileNav] = useState(false);
@@ -14,9 +15,24 @@ const Header = () => {
 	let defaultClasses =
 		'hover:text-custom-red active:text-custom-red text-base cursor-pointer transition-all duration-300 text-gray-800';
 
-	const handleSearchSubmit = (e) => {
+	const handleSearchSubmit = async (e) => {
 		e.preventDefault();
-		alert('seardcdhing...');
+		const searchApiUrl = 'https://tireshop-server.onrender.com/api/search';
+
+		try {
+			const searchTerm = document.getElementById('searchInput').value;
+
+			const response = await axios.get(searchApiUrl, {
+				params: { q: searchTerm },
+			});
+
+			const searchResults = response.data.results;
+			console.log('Search results:', searchResults);
+			navigate('/tyres/search', { state: { searchResults } });
+		} catch (error) {
+			console.error('Error during search:', error);
+		}
+
 		setToggleSearch(false);
 	};
 
@@ -105,17 +121,6 @@ const Header = () => {
 							<button ></button>
 						)}
 					</li>
-					{/* <li>
-						{token ? (
-							// If token is present, display the logout button
-							<button
-								className='cursor-pointer border-none bg-user w-11 h-11 bg-no-repeat bg-cover'
-								onClick={handleLogout}>Logout</button>
-						) : (
-							// If no token, display the login button
-							<button ></button>
-						)}
-					</li> */}
 				</ul>
 			</nav>
 		</header>
@@ -124,4 +129,3 @@ const Header = () => {
 
 export default Header;
 
-// hover:text-custom-red  text-base cursor-pointer transition-all duration-300 text-gray-800

@@ -21,6 +21,17 @@ app.get('/', function (req, res) {
 });
 
 
+app.get('/api/search', async (req, res) => {
+    const searchTerm = req.query.q;
+
+    const searchResults = await Product.find({ name: { $regex: new RegExp(searchTerm, 'i') } });
+
+
+    res.json({ results: searchResults });
+});
+
+
+
 app.post("/api/users", async (req, res) => {
     try {
         const { error } = validate(req.body);
